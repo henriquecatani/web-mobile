@@ -1,6 +1,6 @@
-import { Body, Injectable } from '@nestjs/common';
-import { CreateUserDTO } from '../dtos/create-users-dto';
-import { PrismaService } from '../database/prisma.service';
+import { Body, Injectable } from "@nestjs/common";
+import { CreateUserDTO } from "../dtos/create-users-dto";
+import { PrismaService } from "../database/prisma.service";
 
 @Injectable()
 export class UsersService {
@@ -14,7 +14,7 @@ export class UsersService {
       },
     });
     return {
-      message: 'Usuário criado com sucesso!',
+      message: "Usuário criado com sucesso!",
       data: userCreated,
     };
   }
@@ -27,11 +27,11 @@ export class UsersService {
     await this.prisma.user.update({
       where: { id },
       data: {
-        name: dto.name ?? '',
-        email: dto.email ?? '',
+        name: dto.name ?? "",
+        email: dto.email ?? "",
       },
     });
-    return { message: 'user updated' };
+    return { message: "user updated" };
   }
   async deleteUser(id: number): Promise<void> {
     await this.prisma.user.delete({

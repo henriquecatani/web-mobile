@@ -7,13 +7,13 @@ import {
   ParseIntPipe,
   Post,
   Put,
-} from '@nestjs/common';
-import { CreateUserDTO } from '../dtos/create-users-dto';
-import { UsersService } from './users.service';
+} from "@nestjs/common";
+import { CreateUserDTO } from "../dtos/create-users-dto";
+import { UsersService } from "./users.service";
 
 //GET POST PUT DELETE = RESTFul
 
-@Controller('users')
+@Controller("users")
 export class UsersController {
   constructor(private service: UsersService) {}
 
@@ -27,16 +27,16 @@ export class UsersController {
     return await this.service.getAllUsers();
   }
 
-  @Put(':id')
+  @Put(":id")
   async update(
-    @Param('id', ParseIntPipe) id: number,
+    @Param("id", ParseIntPipe) id: number,
     @Body() body: CreateUserDTO,
   ) {
     await this.service.updateUser(id, body);
   }
 
-  @Delete(':id')
-  async delete(@Param('id', ParseIntPipe) id: number) {
+  @Delete(":id")
+  async delete(@Param("id", ParseIntPipe) id: number) {
     await this.service.deleteUser(id);
   }
 }
