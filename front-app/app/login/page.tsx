@@ -1,8 +1,11 @@
 "use client"
 
-import {useState} from "react";
+import { useState } from "react";
+import { saveToken } from "./auth_service";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+    const router = useRouter();
 
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState("");
@@ -11,7 +14,7 @@ export default function LoginPage() {
 
     async function submitForm(event: any) {
         console.log(event)
-
+        //pause a submissao do form - nao atualiza a page
         event.preventDefault();
         setError("");
 
@@ -28,11 +31,11 @@ export default function LoginPage() {
             setError(data.message);
             return;
         }
-
         console.log(data.access_token);
-        localStorage.setItem("access_token", data.access_token);
+        saveToken(data.access_token);
+        // redirect
+        router.replace("/admin");
     }
-
 
     return (
         <>

@@ -29,19 +29,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  .topo { /* navbar */
-    background-color: #b1e0bf;
-    .active {
-      background-color: rgb(70, 90, 75);
-      transition: 0.75s;
-      color: antiquewhite;
-    }
-    :not(.active) { /* somente o botao ativo recebe a cor branca */
-      color: rgb(24, 24, 24);
-    }
-  }
-
 }
 
 * {
@@ -59,37 +46,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
-
-.menu { /* lista de botoes para mudar de pagina */
-  display: flex;
-  gap: 32px;
-  list-style: none; /* remove marcadores, como • ou 1- */
-  margin: 0;
-  padding: 0;
-
-}
-
-.menu li a {
-  text-decoration: none; /* sem estilo nos links */
-  font-weight: 500; /* quase negrito */
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-.menu li a:hover {
-  background: #aaaaaa;
-  color: #fff;
-}
-
-.topo { /* estilo da navbar */
-  display: flex;
-  align-items: center; /* no ventro verticalmente */
-  justify-content: space-between; /* ajusta o espaço de acordo com os elementos adicionados */
-  padding: 0 52px; /* padding topo e lados */
-  height: 64px;
-  border-radius: 14px;
-  border: 2px solid rgb(70, 90, 75); /* Cor da borda da navbar */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.04); /* tamanho da sombra, suavização de borda e cor */
-  transition: all 0.3s ease;
 }

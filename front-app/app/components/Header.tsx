@@ -1,13 +1,46 @@
+"use client";
+
+import Link from "next/link";
+import { isAuthenticated } from "../login/auth_service";
+import { useEffect, useState } from "react";
+
 export default function Header() {
-    return (
-        <header>
-        <nav className="topo mt-2 mx-2">
-            <ul className="menu">
-                <li><a href="./" className="active">Home</a></li>
-                <li><a href="./login">Login</a></li>
-                <li><a href="./contato.html">Contato</a></li>
-                <li><a href="./about">Sobre</a></li>
-            </ul>
-        </nav>
-    </header>)
+
+  const [autenticado, setAuthenticated] = useState(false);
+
+  useEffect(
+    () => {
+      setAuthenticated(isAuthenticated());
+    }, []
+  );
+
+  return (
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <Link className="navbar-brand" href="/">
+          Navbar
+        </Link>
+        {!autenticado ? (
+          <form className="d-flex">
+            <Link href="/login" className="btn btn-outline-secondary mx-2">
+              Login
+            </Link>
+            <Link href="/register" className="btn btn-outline-success">
+              Register
+            </Link>
+          </form>
+        ) : (
+          <form className="d-flex">
+            <Link href="/admin" className="btn btn-outline-secondary mx-2">
+              Entrar
+            </Link>
+            <Link href="/logout" className="btn btn-outline-success">
+              Logout
+            </Link>
+          </form>
+        )}
+
+      </div>
+    </nav>
+  );
 }
