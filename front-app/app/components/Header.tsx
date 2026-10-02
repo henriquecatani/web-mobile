@@ -18,7 +18,7 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          Navbar
+          Apps
         </Link>
         {!autenticado ? (
           <form className="d-flex">

@@ -6,6 +6,7 @@ import {
   Param,
   Body,
   ParseIntPipe,
+  Delete,
 } from "@nestjs/common";
 import { CreateProfileDto } from "src/dtos/create-profile-dto";
 import { UpdateProfileDto } from "src/dtos/update-profile-dto";
@@ -19,6 +20,11 @@ export class ProfilesController {
     return await this.profilesService.create(dto);
   }
 
+  @Get()
+  async findAll() {
+    return await this.profilesService.getAllProfiles();
+  }
+
   @Get(":id")
   async findOne(@Param("id", ParseIntPipe) id: number) {
     return await this.profilesService.findOne(id);
@@ -30,5 +36,10 @@ export class ProfilesController {
     @Body() dto: UpdateProfileDto,
   ) {
     return this.profilesService.update(id, dto);
+  }
+
+  @Delete(":id")
+  async delete(@Param("id", ParseIntPipe) id: number) {
+    await this.profilesService.deleteProfile(id);
   }
 }

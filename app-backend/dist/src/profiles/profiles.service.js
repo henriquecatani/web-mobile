@@ -52,6 +52,19 @@ let ProfilesService = class ProfilesService {
             },
         });
     }
+    async getAllProfiles() {
+        return this.prisma.profile.findMany({
+            select: {
+                id: true,
+                userId: true,
+                fullName: true,
+                birthDate: true,
+                avatarUrl: true,
+                createdAt: true,
+            },
+            orderBy: { fullName: "asc" },
+        });
+    }
     async findOne(id) {
         const p = await this.prisma.profile.findUnique({ where: { id } });
         if (!p)
@@ -63,6 +76,11 @@ let ProfilesService = class ProfilesService {
             birthDate: p.birthDate?.toISOString(),
             avatarUrl: p.avatarUrl ?? "",
         };
+    }
+    async deleteProfile(id) {
+        await this.prisma.profile.delete({
+            where: { id },
+        });
     }
 };
 exports.ProfilesService = ProfilesService;

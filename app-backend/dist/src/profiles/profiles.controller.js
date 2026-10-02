@@ -25,11 +25,17 @@ let ProfilesController = class ProfilesController {
     async create(dto) {
         return await this.profilesService.create(dto);
     }
+    async findAll() {
+        return await this.profilesService.getAllProfiles();
+    }
     async findOne(id) {
         return await this.profilesService.findOne(id);
     }
     async update(id, dto) {
         return this.profilesService.update(id, dto);
+    }
+    async delete(id) {
+        await this.profilesService.deleteProfile(id);
     }
 };
 exports.ProfilesController = ProfilesController;
@@ -40,6 +46,12 @@ __decorate([
     __metadata("design:paramtypes", [create_profile_dto_1.CreateProfileDto]),
     __metadata("design:returntype", Promise)
 ], ProfilesController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], ProfilesController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
@@ -55,6 +67,13 @@ __decorate([
     __metadata("design:paramtypes", [Number, update_profile_dto_1.UpdateProfileDto]),
     __metadata("design:returntype", Promise)
 ], ProfilesController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], ProfilesController.prototype, "delete", null);
 exports.ProfilesController = ProfilesController = __decorate([
     (0, common_1.Controller)("profiles"),
     __metadata("design:paramtypes", [profiles_service_1.ProfilesService])

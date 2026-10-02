@@ -2,19 +2,20 @@
 import {useEffect, useState} from "react";
 import {getToken} from "@/app/login/auth_service";
 
-type User = {
+type Profile = {
     id: number;
     name: string;
     email: string;
     passwordHash: string;
+    userId: number;
 };
 
-export default function Users() {
+export default function Profiles() {
 
-    const API = "http://localhost:3000/api/users";
+    const API = "http://localhost:3000/api/profiles";
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [users, setUsers] = useState<User[]>([]);
+    const [profiles, setProfiles] = useState<Profile[]>([]);
     const [error, setError] = useState("");
     const [id, setId] = useState<number | string | null>(null);
 
@@ -24,10 +25,10 @@ export default function Users() {
                 headers: { Authorization: `Bearer ${getToken()}` },
             });
             if (!response.ok)
-                throw new Error("Não foi possível carregar os usuários.");
-            setUsers(await response.json());
+                throw new Error("Não foi possível carregar os perfis.");
+            setProfiles(await response.json());
         } catch {
-            setError("Não foi possível carregar os usuários. Verifique a API.");
+            setError("Não foi possível carregar os perfis. Verifique a API.");
         }
     }
 
@@ -57,13 +58,13 @@ export default function Users() {
         }
     }
 
-    function edit(user: User) {
-        setId(user.id);
-        setName(user.name);
-        setEmail(user.email);
+    function edit(profile: Profile) {
+        setId(profile.id);
+        setName(profile.name);
+        setEmail(profile.email);
     }
 
-    async function remove(userId: User["id"]) {
+    async function remove(userId: Profile["id"]) {
         const response = await fetch(`${API}/${userId}`, {
             method: "DELETE",
             headers: {
@@ -129,7 +130,6 @@ export default function Users() {
                     </thead>
                     <tbody>
                     {users.map((user) => (
-
                         <tr key={user.id}>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
@@ -156,6 +156,7 @@ export default function Users() {
                             </td>
                         </tr>
                     )}
+
                     </tbody>
                 </table>
             </div>

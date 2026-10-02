@@ -8,7 +8,20 @@ Content-Type: application/json
     "avatarUrl": "https://s2-valor.glbimg.com/g15-iCR7opGAsSc2gXJ87i7WKiA=/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/E/b/MHG35ASMGYhl3jHOBbyg/foto19emp-101-mateus-b4.jpg"
 }
 ###
+POST http://localhost:3000/api/profiles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoidXN1YXJpb0B1cGYuYnIiLCJuYW1lIjoidXN1YXJpbyIsImlhdCI6MTc5MDkwMzAyMywiZXhwIjoxNzkwOTg5NDIzfQ.-qCpdnuUYgrfj-gXXi3xL698JigT2YBSSTlx9FhDGaw
+
+{
+  "userId": 4,
+  "fullName": "Henrique Catani",
+  "birthDate": "2007-02-22T00:00:00Z"
+}
+###
 GET http://localhost:3000/api/profiles/1
+###
+GET http://localhost:3000/api/profiles
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoidXN1YXJpb0B1cGYuYnIiLCJuYW1lIjoidXN1YXJpbyIsImlhdCI6MTc5MDkwMzAyMywiZXhwIjoxNzkwOTg5NDIzfQ.-qCpdnuUYgrfj-gXXi3xL698JigT2YBSSTlx9FhDGaw
 ###
 PUT http://localhost:3000/api/profiles/1
 Content-Type: application/json
