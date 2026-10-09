@@ -17,6 +17,9 @@ export default function Admin() {
                     <Link href="/admin/users">Gerenciar Usuários</Link>
                 </li>
                 <li>
+                    <Link href="/admin/profiles">Gerenciar Perfis</Link>
+                </li>
+                <li>
                     <Link href="/admin/products">Gerenciar Produtos</Link>
                 </li>
                 <li>
